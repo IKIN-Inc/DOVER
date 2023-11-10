@@ -138,7 +138,11 @@ if __name__ == "__main__":
     if args.fusion:
         # predict fused overall score, with default score-level fusion parameters
         print("Normalized fused overall score (scale in [0,1]):", fuse_results(results))
+        with open('../dover-fused.txt', "w") as file:
+            file.write(str(fuse_results(results)))
+            print('results copied to dover-fused.txt')
 
     else:
         # predict disentangled scores
         rescale_results(results, vname=args.video_path)
+
